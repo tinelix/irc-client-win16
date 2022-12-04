@@ -1,0 +1,116 @@
+//Microsoft App Studio generated resource script.
+//
+#include "Resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTDIALOG DIALOG DISCARDABLE  0, 0, 170, 67
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            100,IDC_STATIC,7,7,18,20
+    LTEXT           "Tinelix IRC Client",IDC_STATIC,34,7,131,8
+    CONTROL         "\251 2022 Dmitry Tretyakov (aka. Tinelix)",
+                    IDC_CORYRIGHT,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,34,
+                    17,135,8
+    DEFPUSHBUTTON   "OK",IDOK,124,48,42,14,WS_GROUP
+END
+
+IDD_MAINDIALOG DIALOG DISCARDABLE  0, 0, 274, 153
+STYLE WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
+CAPTION "Tinelix IRC for Win16"
+CLASS "Main Window"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_MSGINPUT,1,1,272,134,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT2,1,138,228,15,ES_AUTOHSCROLL
+    PUSHBUTTON      "Send",IDC_SENDBTN,231,138,43,15
+END
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR ACCELERATORS DISCARDABLE 
+BEGIN
+    "a",            ID_HELP_ABOUT,          ASCII,  ALT, NOINVERT
+END
+
+#ifdef APSTUDIO_INVOKED
+//////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "Resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""tlx_irc.ver""\0"
+END
+
+/////////////////////////////////////////////////////////////////////////////////////
+#endif    // APSTUDIO_INVOKED
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_APPMENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Client"
+    BEGIN
+        MENUITEM "&Connect...",                 ID_CONNECT
+        MENUITEM SEPARATOR
+        MENUITEM "&Quit...",                    ID_QUIT
+    END
+    POPUP "Help"
+    BEGIN
+        MENUITEM "&About...",                   ID_ABOUT
+    END
+END
+
+
+#ifndef APSTUDIO_INVOKED
+////////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "tlx_irc.ver"
+/////////////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

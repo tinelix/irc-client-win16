@@ -6,16 +6,18 @@
 
 /* Global instance handle */
 HINSTANCE g_hInstance = NULL;
+WSADATA WSAData;
 
 /* Our application entry point */
 int PASCAL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
   HWND hWnd;
   HACCEL hAccelerators;
-  MSG msg;
+  MSG msg; 
+  int status;
 
   /* Assign global HINSTANCE */
-  g_hInstance = hInstance;
+  g_hInstance = hInstance; 
 
   /* Register our main window class, or error */
   if (!hPrevInstance && !RegisterMainWindowClass())
@@ -37,6 +39,10 @@ int PASCAL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
   /* Show main window and force a paint */
   ShowWindow(hWnd, nCmdShow);
   UpdateWindow(hWnd);
+  status = WSAStartup(101, &WSAData);
+  if(status != 0) {
+  	MessageBox(NULL, "WinSock initialization failed. Application cannot be started.", "Error", MB_ICONSTOP|MB_OK);
+  } 
 
   /* Main message loop */
   while (GetMessage(&msg, NULL, 0, 0) > 0)
@@ -49,4 +55,8 @@ int PASCAL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
   }
 
   return (int)msg.wParam;
+}
+
+void QuitApp() {
+	WSACleanup(WSAData);
 }

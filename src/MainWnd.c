@@ -1,7 +1,7 @@
 #include "AboutDlg.h"
 #include "Globals.h"
 #include "MainWnd.h" 
-#include "ConnmDlg.h"
+#include "ConnMDlg.h"
 #include "Resource.h"
 
 /* Main window class and title */
@@ -23,9 +23,8 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
           return 0;
         }
         case ID_CONNECT:
-        {     
-          MessageBox(hWnd, "Not implemented yet.", "Error", MB_ICONSTOP|MB_OK);
-          //ShowConnManDialog(hWnd);
+        {
+          ShowConnManDialog(hWnd);
           return 0;
         }
         case IDOK:
@@ -71,7 +70,8 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
 
     case WM_DESTROY:
-    {
+    { 
+      QuitApp();
       PostQuitMessage(0);
       return 0;
     }
@@ -109,8 +109,9 @@ HWND CreateMainWindow()
     hMenu = LoadMenu(g_hInstance, MAKEINTRESOURCE(IDR_APPMENU));
     hSysMenu = GetSystemMenu(hWnd, FALSE);
     InsertMenu(hSysMenu, 5, MF_BYPOSITION | MF_SEPARATOR, 0, NULL);
-    InsertMenu(hSysMenu, 6, MF_BYPOSITION, ID_ABOUT, "About");
+    InsertMenu(hSysMenu, 6, MF_BYPOSITION, ID_ABOUT, "About...");
     SetMenu(hWnd, hMenu);
+    SetWindowText(hWnd, AppName);
   }
 
   return hWnd;

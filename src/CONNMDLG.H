@@ -9,4 +9,6 @@ BOOL CALLBACK __export ConnManDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam,
 /* Show our "about" dialog */
 void ShowConnManDialog(HWND owner);
 
+void SetConnManUiFont(HWND hWnd);
+
 #endif

@@ -26,7 +26,7 @@ CFLAGS_D_WEXE = /nologo /G2 /W3 /Zi /AM /Od /D "_DEBUG" /FR /GA /Fd"TLX_IRC.PDB"
 CFLAGS_R_WEXE = /nologo /W3 /Gf /O1 /D "WINVER"="0x0300" /D "NDEBUG" /FR /GA /GEs /GEm
 LFLAGS_D_WEXE = /NOLOGO /NOD /PACKC:61440 /STACK:10240 /ALIGN:16 /ONERROR:NOEXE /CO  
 LFLAGS_R_WEXE = /NOLOGO /NOD /PACKC:61440 /ALIGN:16 /ONERROR:NOEXE  
-LIBS_D_WEXE = oldnames libw mlibcew commdlg.lib olecli.lib olesvr.lib shell.lib 
+LIBS_D_WEXE = oldnames libw mlibcew winsock.lib commdlg.lib olecli.lib olesvr.lib shell.lib 
 LIBS_R_WEXE = oldnames libw slibcew commdlg.lib olecli.lib olesvr.lib shell.lib 
 RCFLAGS = /nologo 
 RESFLAGS = /nologo /30 
@@ -51,7 +51,10 @@ RCDEFINES = $(R_RCDEFINES)
 !endif
 SBRS = ABOUTDLG.SBR \
 		APP.SBR \
-		MAINWND.SBR
+		MAINWND.SBR \
+		CONNMDLG.SBR \
+		ETEXTDLG.SBR \
+		PRFSTDLG.SBR
 
 
 ABOUTDLG_DEP = c:\home\tlx_irc\src\aboutdlg.h \
@@ -65,11 +68,24 @@ APP_DEP = c:\home\tlx_irc\src\globals.h \
 
 MAINWND_DEP = c:\home\tlx_irc\src\aboutdlg.h \
 	c:\home\tlx_irc\src\globals.h \
-	c:\home\tlx_irc\src\mainwnd.h
+	c:\home\tlx_irc\src\mainwnd.h \
+	c:\home\tlx_irc\src\connmdlg.h
 
 
-RESOURCE_RCDEP = c:\home\tlx_irc\src\app.ico \
-	c:\home\tlx_irc\src\tlx_irc.ver
+RESOURCE_RCDEP = c:\home\tlx_irc\src\tlx_irc.ver
+
+
+CONNMDLG_DEP = c:\home\tlx_irc\src\connmdlg.h \
+	c:\home\tlx_irc\src\etextdlg.h \
+	c:\home\tlx_irc\src\globals.h
+
+
+ETEXTDLG_DEP = c:\home\tlx_irc\src\etextdlg.h \
+	c:\home\tlx_irc\src\globals.h
+
+
+PRFSTDLG_DEP = c:\home\tlx_irc\src\prfstdlg.h \
+	c:\home\tlx_irc\src\globals.h
 
 
 all:	$(PROJ).EXE $(PROJ).BSC
@@ -86,14 +102,26 @@ MAINWND.OBJ:	SRC\MAINWND.C $(MAINWND_DEP)
 RESOURCE.RES:	SRC\RESOURCE.RC $(RESOURCE_RCDEP)
 	$(RC) $(RCFLAGS) $(RCDEFINES) -r -FoC:\HOME\TLX_IRC\RESOURCE.RES SRC\RESOURCE.RC
 
+CONNMDLG.OBJ:	SRC\CONNMDLG.C $(CONNMDLG_DEP)
+	$(CC) $(CFLAGS) $(CUSEPCHFLAG) /c SRC\CONNMDLG.C
+
+ETEXTDLG.OBJ:	SRC\ETEXTDLG.C $(ETEXTDLG_DEP)
+	$(CC) $(CFLAGS) $(CUSEPCHFLAG) /c SRC\ETEXTDLG.C
+
+PRFSTDLG.OBJ:	SRC\PRFSTDLG.C $(PRFSTDLG_DEP)
+	$(CC) $(CFLAGS) $(CUSEPCHFLAG) /c SRC\PRFSTDLG.C
+
 
 $(PROJ).EXE::	RESOURCE.RES
 
-$(PROJ).EXE::	ABOUTDLG.OBJ APP.OBJ MAINWND.OBJ $(OBJS_EXT) $(DEFFILE)
+$(PROJ).EXE::	ABOUTDLG.OBJ APP.OBJ MAINWND.OBJ CONNMDLG.OBJ ETEXTDLG.OBJ PRFSTDLG.OBJ $(OBJS_EXT) $(DEFFILE)
 	echo >NUL @<<$(PROJ).CRF
 ABOUTDLG.OBJ +
 APP.OBJ +
 MAINWND.OBJ +
+CONNMDLG.OBJ +
+ETEXTDLG.OBJ +
+PRFSTDLG.OBJ +
 $(OBJS_EXT)
 $(PROJ).EXE
 $(MAPFILE)

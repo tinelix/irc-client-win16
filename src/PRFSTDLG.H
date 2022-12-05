@@ -7,9 +7,11 @@
 /* Dialog procedure for our "about" dialog */
 BOOL CALLBACK __export ProfileSettingsDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
+long CALLBACK PagesComboProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 /* Show our "about" dialog */
 void ShowProfileSettingsDialog(HWND owner);  
 
-void SetProfileSettingsUiFont(HWND hWnd);
+void SetProfileSettingsUiFont(HWND hwndParent, HWND hWnd, char* page_name);
 
 #endif

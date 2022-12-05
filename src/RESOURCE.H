@@ -35,6 +35,7 @@
 #define IDC_APPNAME                     1013
 #define IDC_GITHUB_LINK                 1014
 #define IDC_COMBO1                      1015
+#define IDC_PAGESCOMBO                  1015
 #define IDC_PAGE_LABEL                  1016
 #define IDC_PROFILE_NAME_LABEL          1018
 #define IDC_PROFILE_NAME_EDIT           1019

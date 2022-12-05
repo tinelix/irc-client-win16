@@ -41,10 +41,8 @@ BOOL CALLBACK ConnManDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM l
 
 void ShowConnManDialog(HWND owner)
 {
-  if(MessageBox(owner, "Not implemented yet.", "Error", MB_ICONSTOP|MB_OK) == IDOK) {    
-  	HWND hWnd = CreateDialog(g_hInstance, MAKEINTRESOURCE(IDD_CONNMANDIALOG), owner, ConnManDialogProc);
-  	SetConnManUiFont(hWnd);   
-  }
+  HWND hWnd = CreateDialog(g_hInstance, MAKEINTRESOURCE(IDD_CONNMANDIALOG), owner, ConnManDialogProc);
+  SetConnManUiFont(hWnd);
 }
 
 void SetConnManUiFont(HWND hWnd) {

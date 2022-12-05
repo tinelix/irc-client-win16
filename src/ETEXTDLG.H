@@ -9,4 +9,6 @@ BOOL CALLBACK __export EnterTextDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wPara
 /* Show our "about" dialog */
 void ShowEnterTextDialog(HWND owner, char* _key);
 
+void SetEnterTextUiFont(HWND hWnd);
+
 #endif

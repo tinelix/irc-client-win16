@@ -92,8 +92,8 @@ FONT 8, "Helv"
 BEGIN
     LTEXT           "Profile name:",IDC_PROFILE_NAME_LABEL,3,4,50,9
     EDITTEXT        IDC_PROFILE_NAME_EDIT,53,3,117,12,ES_AUTOHSCROLL
-    LTEXT           "Nickname:",IDC_NICKNAME_LABEL,3,19,50,9
-    EDITTEXT        IDC_NICKNAME_EDIT,53,18,117,12,ES_AUTOHSCROLL
+    LTEXT           "Nicknames:",IDC_NICKNAMES_LABEL,3,19,50,9
+    EDITTEXT        IDC_NICKNAMES_EDIT,53,17,117,12,ES_AUTOHSCROLL
     LTEXT           "Password:",IDC_PASSWORD_LABEL,3,34,50,9
     EDITTEXT        IDC_PASSWORD_EDIT,53,32,117,12,ES_PASSWORD | 
                     ES_AUTOHSCROLL
@@ -159,9 +159,17 @@ IDR_APPMENU MENU DISCARDABLE
 BEGIN
     POPUP "Client"
     BEGIN
-        MENUITEM "&Connect...",                 ID_CONNECT
+        MENUITEM "&Connect",                    ID_CONNECT
         MENUITEM SEPARATOR
         MENUITEM "&Quit...",                    ID_QUIT
+    END
+    POPUP "Profile"
+    BEGIN
+        MENUITEM "New...",                      ID_NEW_PROFILE
+        MENUITEM "Open...",                     ID_OPEN_PROFILE
+        MENUITEM SEPARATOR
+        MENUITEM "Edit",                        ID_EDIT_PROFILE, GRAYED
+        MENUITEM "Delete",                      ID_DELETE_PROFILE, GRAYED
     END
     POPUP "Help"
     BEGIN

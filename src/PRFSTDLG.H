@@ -10,7 +10,7 @@ BOOL CALLBACK __export ProfileSettingsDialogProc(HWND hwndDlg, UINT uMsg, WPARAM
 long CALLBACK PagesComboProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 /* Show our "about" dialog */
-void ShowProfileSettingsDialog(HWND owner);  
+void ShowProfileSettingsDialog(HWND owner, char _profile_name[]);  
 
 void SetProfileSettingsUiFont(HWND hwndParent, HWND hWnd, char* page_name);
 

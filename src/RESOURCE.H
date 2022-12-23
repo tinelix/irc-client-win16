@@ -17,6 +17,10 @@
 #define ID_CONNECT                      201
 #define ID_QUIT                         202
 #define ID_ABOUT                        204
+#define ID_NEW_PROFILE                  205
+#define ID_OPEN_PROFILE                 207
+#define ID_EDIT_PROFILE                 208
+#define ID_DELETE_PROFILE               209
 #define IDC_MSGINPUT                    1002
 #define IDC_MSGINPUT_EDIT               1002
 #define IDC_EDIT2                       1003
@@ -41,8 +45,10 @@
 #define IDC_PROFILE_NAME_EDIT           1019
 #define IDC_NICKNAME_LABEL              1020
 #define IDC_PROFILE_SERVER_LABEL        1020
+#define IDC_NICKNAMES_LABEL             1020
 #define IDC_NICKNAME_EDIT               1021
 #define IDC_PROFILE_SERVER_EDIT         1021
+#define IDC_NICKNAMES_EDIT              1021
 #define IDC_PASSWORD_LABEL              1022
 #define IDC_PROFILE_PORT_LABEL          1022
 #define IDC_PASSWORD_EDIT               1023
@@ -56,8 +62,8 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 
-#define _APS_NEXT_RESOURCE_VALUE        109
-#define _APS_NEXT_COMMAND_VALUE         205
+#define _APS_NEXT_RESOURCE_VALUE        110
+#define _APS_NEXT_COMMAND_VALUE         210
 #define _APS_NEXT_CONTROL_VALUE         1022
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

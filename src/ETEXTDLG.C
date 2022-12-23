@@ -5,6 +5,7 @@
 #include <string.h> 
 
 char* key;
+char* value;
 
 BOOL CALLBACK EnterTextDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -17,7 +18,19 @@ BOOL CALLBACK EnterTextDialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM
       switch (id)
       {
         case IDOK: {
-	      ShowProfileSettingsDialog(hwndDlg);
+          HWND editText = GetDlgItem(hwndDlg, IDC_ENTERTEXTBOX);
+          GetWindowText(editText, value, 256);
+          if(!strcmp(key, "profile_name")) {
+          	if(strlen(value) > 8) {
+          		MessageBox(hwndDlg, "Profile name must not exceed 8 characters.", "Error", MB_ICONSTOP|MB_OK);
+          		return FALSE;
+          	}
+          	if(!strcmp(value, "client")) {
+          		MessageBox(hwndDlg, "This name is already reserved. Try choosing a different name.", "Error", MB_ICONSTOP|MB_OK);
+          		return FALSE;
+          	}
+	      	ShowProfileSettingsDialog(hwndDlg, value);
+	      }
           EndDialog(hwndDlg, id);
           return TRUE;       
         }

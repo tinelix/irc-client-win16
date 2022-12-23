@@ -1,5 +1,5 @@
 #ifndef MAINWND_H
-#define MAINWND_H
+#define MAINWND_H    
 
 #include <windows.h>
 

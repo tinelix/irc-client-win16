@@ -54,7 +54,8 @@ SBRS = ABOUTDLG.SBR \
 		MAINWND.SBR \
 		CONNMDLG.SBR \
 		ETEXTDLG.SBR \
-		PRFSTDLG.SBR
+		PRFSTDLG.SBR \
+		IRCCLNT.SBR
 
 
 ABOUTDLG_DEP = c:\home\tlx_irc\src\aboutdlg.h \
@@ -67,9 +68,11 @@ APP_DEP = c:\home\tlx_irc\src\globals.h \
 
 
 MAINWND_DEP = c:\home\tlx_irc\src\aboutdlg.h \
+	c:\home\tlx_irc\src\etextdlg.h \
 	c:\home\tlx_irc\src\globals.h \
 	c:\home\tlx_irc\src\mainwnd.h \
-	c:\home\tlx_irc\src\connmdlg.h
+	c:\home\tlx_irc\src\connmdlg.h \
+	c:\home\tlx_irc\src\ircclnt.h
 
 
 RESOURCE_RCDEP = c:\home\tlx_irc\src\tlx_irc.ver
@@ -81,11 +84,16 @@ CONNMDLG_DEP = c:\home\tlx_irc\src\connmdlg.h \
 
 
 ETEXTDLG_DEP = c:\home\tlx_irc\src\etextdlg.h \
+	c:\home\tlx_irc\src\prfstdlg.h \
 	c:\home\tlx_irc\src\globals.h
 
 
 PRFSTDLG_DEP = c:\home\tlx_irc\src\prfstdlg.h \
 	c:\home\tlx_irc\src\globals.h
+
+
+IRCCLNT_DEP = c:\programs\msvc\include\winsock.h \
+	c:\home\tlx_irc\src\ircclnt.h
 
 
 all:	$(PROJ).EXE $(PROJ).BSC
@@ -111,10 +119,14 @@ ETEXTDLG.OBJ:	SRC\ETEXTDLG.C $(ETEXTDLG_DEP)
 PRFSTDLG.OBJ:	SRC\PRFSTDLG.C $(PRFSTDLG_DEP)
 	$(CC) $(CFLAGS) $(CUSEPCHFLAG) /c SRC\PRFSTDLG.C
 
+IRCCLNT.OBJ:	SRC\IRCCLNT.C $(IRCCLNT_DEP)
+	$(CC) $(CFLAGS) $(CUSEPCHFLAG) /c SRC\IRCCLNT.C
+
 
 $(PROJ).EXE::	RESOURCE.RES
 
-$(PROJ).EXE::	ABOUTDLG.OBJ APP.OBJ MAINWND.OBJ CONNMDLG.OBJ ETEXTDLG.OBJ PRFSTDLG.OBJ $(OBJS_EXT) $(DEFFILE)
+$(PROJ).EXE::	ABOUTDLG.OBJ APP.OBJ MAINWND.OBJ CONNMDLG.OBJ ETEXTDLG.OBJ PRFSTDLG.OBJ \
+	IRCCLNT.OBJ $(OBJS_EXT) $(DEFFILE)
 	echo >NUL @<<$(PROJ).CRF
 ABOUTDLG.OBJ +
 APP.OBJ +
@@ -122,6 +134,7 @@ MAINWND.OBJ +
 CONNMDLG.OBJ +
 ETEXTDLG.OBJ +
 PRFSTDLG.OBJ +
+IRCCLNT.OBJ +
 $(OBJS_EXT)
 $(PROJ).EXE
 $(MAPFILE)

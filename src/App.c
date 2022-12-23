@@ -22,14 +22,14 @@ int PASCAL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
   /* Register our main window class, or error */
   if (!hPrevInstance && !RegisterMainWindowClass())
   {
-    MessageBox(NULL, "Error registering main window class.", "Error", MB_ICONHAND | MB_OK);
+    FatalAppExit(0, "Window class registration failed.");
     return 0;
   }
 
   /* Create our main window, or error */
   if (!(hWnd = CreateMainWindow()))
   {
-    MessageBox(NULL, "Error creating main window.", "Error", MB_ICONHAND | MB_OK);
+  	FatalAppExit(0, "Window creating failed.");
     return 0;
   }
 
@@ -39,9 +39,10 @@ int PASCAL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
   /* Show main window and force a paint */
   ShowWindow(hWnd, nCmdShow);
   UpdateWindow(hWnd);
-  status = WSAStartup(101, &WSAData);
+  status = WSAStartup(100, &WSAData);
   if(status != 0) {
-  	MessageBox(NULL, "WinSock initialization failed. Application cannot be started.", "Error", MB_ICONSTOP|MB_OK);
+  	FatalAppExit(0, "WinSock initialization failed. Application cannot be started.");
+    return 0;
   } 
 
   /* Main message loop */

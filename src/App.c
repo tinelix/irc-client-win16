@@ -39,7 +39,7 @@ int PASCAL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
   /* Show main window and force a paint */
   ShowWindow(hWnd, nCmdShow);
   UpdateWindow(hWnd);
-  status = WSAStartup(100, &WSAData);
+  status = WSAStartup(101, &WSAData);
   if(status != 0) {
   	FatalAppExit(0, "WinSock initialization failed. Application cannot be started.");
     return 0;
